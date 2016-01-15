@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+
+## Ignoring files associated with PhpStorm
+*.iml
+.idea/
+*.ipr
+*.iws
