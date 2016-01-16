@@ -15,15 +15,18 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
 
-        // Study seasons
-        $this->call(SchoolYearsTableSeeder::class);
-        $this->call(PeriodsTableSeeder::class);
-        $this->call(UnitsTableSeeder::class);
-
         // Study categories
         $this->call(GradesTableSeeder::class);
 
         // Courses and assignments
         $this->call(CoursesTableSeeder::class);
+        $this->call(CourseHandooksTableSeeder::class);
+
+        // Study seasons
+        $this->call(SchoolYearsTableSeeder::class);
+        $this->call(PeriodsTableSeeder::class);
+        $this->call(UnitsTableSeeder::class);
+
+
     }
 }

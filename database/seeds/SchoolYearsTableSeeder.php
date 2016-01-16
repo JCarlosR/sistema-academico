@@ -33,14 +33,16 @@ class SchoolYearsTableSeeder extends Seeder
         SchoolYear::create([
             'name' => 'Año ' . ($year-1),
             'start' => $prev_start,
-            'end' => $prev_end
+            'end' => $prev_end,
+            'course_handbook_id' => 1 // malla curricular
         ]);
 
         // Current school year
         SchoolYear::create([
             'name' => 'Año ' . $year,
             'start' => $start,
-            'end' => $end
+            'end' => $end,
+            'course_handbook_id' => 1 // malla curricular
         ]);
     }
 }

@@ -16,6 +16,11 @@ class SchoolYear extends Model
         return $this->hasMany('App\Period');
     }
 
+    public function course_handbook()
+    {
+        return $this->belongsTo('App\CourseHandbook');
+    }
+
     public function getStartFormatAttribute()
     {
         return $this->start->format('d/m/Y');

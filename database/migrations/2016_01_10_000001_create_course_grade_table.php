@@ -15,6 +15,12 @@ class CreateCourseGradeTable extends Migration
         Schema::create('course_grade', function (Blueprint $table) {
             $table->increments('id');
 
+            // This assignment belongs to a handbook
+            $table->integer('course_handbook_id')->unsigned();
+            $table->foreign('course_handbook_id')->references('id')->on('course_handbooks');
+
+            // Associated tables
+
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
 

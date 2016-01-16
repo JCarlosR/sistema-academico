@@ -19,6 +19,10 @@ class CreateSchoolYearsTable extends Migration
             $table->date('start');
             $table->date('end');
 
+            // Each schoolYear uses a particular course_handbook
+            $table->integer('course_handbook_id')->unsigned();
+            $table->foreign('course_handbook_id')->references('id')->on('course_handbooks');
+
             $table->timestamps();
         });
     }

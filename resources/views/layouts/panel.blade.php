@@ -304,10 +304,10 @@
               <ul class="treeview-menu">
                 <li><a href="{{ url('configuracion/datos') }}"><i class="fa fa-circle-o"></i> Datos de la institución</a></li>
                 <li><a href="{{ url('configuracion/parametros') }}"><i class="fa fa-circle-o"></i> Parámetros generales</a></li>
-                <li><a href="{{ url('configuracion/anos-lectivos') }}"><i class="fa fa-circle-o"></i> Años lectivos</a></li>
                 <li><a href="{{ url('configuracion/grados') }}"><i class="fa fa-circle-o"></i> Grados de estudio</a></li>
                 <li><a href="{{ url('configuracion/cursos') }}"><i class="fa fa-circle-o"></i> Gestionar cursos</a></li>
-                  <li><a href="{{ url('configuracion/cursos/asignar') }}"><i class="fa fa-circle-o"></i> Asignar cursos</a></li>
+                <li><a href="{{ url('configuracion/mallas') }}"><i class="fa fa-circle-o"></i> Malla curricular</a></li>
+                <li><a href="{{ url('configuracion/anos-lectivos') }}"><i class="fa fa-circle-o"></i> Años lectivos</a></li>
               </ul>
             </li>
             <li class="treeview">

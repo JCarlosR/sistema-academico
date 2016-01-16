@@ -13,7 +13,7 @@
 <div class="box">
 
     <div class="box-header with-border">
-        <h3 class="box-title">Asignación de cursos por grado</h3>
+        <h3 class="box-title">Asignación de cursos a "{{ $handbook->name }}"</h3>
         <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Minimizar">
                 <i class="fa fa-minus"></i>
@@ -36,11 +36,11 @@
             @endif
 
             <div class="col-sm-6">
-                <form id="formAsignar" data-action="{{ url('asociar/curso/{course}/grado/{grade}') }}" method="POST">
+                <form id="formAsignar" data-action="{{ url('asociar/'.$handbook->id.'/curso/{course}/grado/{grade}') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="grade">Seleccione grado a gestionar:</label>
-                        <select id="cboGrade" name="grade" class="form-control" data-redirect="{{ url('configuracion/cursos/asignar/{grade}') }}">
+                        <select id="cboGrade" name="grade" class="form-control" data-redirect="{{ url('configuracion/malla/'.$handbook->id.'/grado/{grade}') }}">
                             @foreach ($grades as $grade)
                                 @if ($grade->id == $current_grade->id)
                                     <option value="{{ $grade->id }}" selected>{{ $grade->name }}</option>
@@ -81,7 +81,7 @@
                             <td data-name>{{ $course->name }}</td>
                             <td data-description>{{ $course->description }}</td>
                             <td>
-                                <a href="{{ url('desasociar/curso/'.$course->id.'/grado/'.$current_grade->id) }}" class="btn btn-danger">Desasignar</a>
+                                <a href="{{ url('desasociar/'.$handbook->id.'/curso/'.$course->id.'/grado/'.$current_grade->id) }}" class="btn btn-danger">Desasignar</a>
                             </td>
                         </tr>
                     @endforeach
