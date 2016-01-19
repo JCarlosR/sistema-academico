@@ -19,7 +19,23 @@
         </div>
     </div>
     <div class="box-body">
-        <form action="{{ url('/') }}" method="POST" enctype="multipart/form-data">
+        @if (session('success'))
+            <div class="alert alert-success">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ url('alumnos/registrar') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="row">

@@ -96,4 +96,11 @@ class GradeController extends Controller
         return back();
     }
 
+    public function sections($id)
+    {
+        $grade = Grade::find($id);
+        $sections = $grade->sections;
+        return $sections;
+    }
+
 }

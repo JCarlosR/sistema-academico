@@ -50,6 +50,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('grado/registrar', 'GradeController@store');
     Route::put('grado/editar', 'GradeController@update');
     Route::get('grado/eliminar/{id}', 'GradeController@destroy');
+    Route::get('grado/{id}/secciones', 'GradeController@sections');
 
     // Section CRUD
     Route::post('seccion/registrar', 'SectionController@store');
@@ -86,9 +87,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('unidad/eliminar/{id}', 'UnitController@destroy');
 
 
-    // Users registration routes
+    // Users CRUD
     Route::get('alumnos/registrar', 'StudentController@create');
+    Route::post('alumnos/registrar', 'StudentController@store');
     Route::get('docentes/registrar', 'TeacherController@create');
+    Route::post('docentes/registrar', 'TeacherController@store');
     Route::get('personal/registrar', 'WorkerController@create');
+    Route::post('personal/registrar', 'WorkerController@store');
+
+    // Enrollment CRUD
+    Route::get('matricula/registrar', 'EnrollmentController@create');
+
 
 });

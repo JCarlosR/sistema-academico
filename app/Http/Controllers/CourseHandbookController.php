@@ -72,8 +72,9 @@ class CourseHandbookController extends Controller
                 'errors' => $v->getMessageBag()->toArray()
             ];
 
-        // Finally, the course_handbook will be updated
         $course_handbook = CourseHandbook::find($request->get('course_handbook_id'));
+
+        // Finally, the course_handbook will be updated
         $course_handbook->name = $request->get('name');
         $course_handbook->description = $request->get('description');
         $course_handbook->save();

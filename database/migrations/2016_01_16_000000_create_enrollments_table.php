@@ -23,11 +23,14 @@ class CreateEnrollmentsTable extends Migration
             $table->integer('school_year_id')->unsigned();
             $table->foreign('school_year_id')->references('id')->on('school_years');
 
+            // Grade and section
+            $table->integer('section_id')->unsigned();
+            $table->foreign('section_id')->references('id')->on('sections');
+
             // Status
             // 0: Pendiente de pago
             // 1: Pago completo
             $table->boolean('status');
-
 
             $table->timestamps();
         });

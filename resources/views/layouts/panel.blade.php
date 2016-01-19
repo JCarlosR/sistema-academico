@@ -221,8 +221,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> Estado de matrícula</a></li>
-                  <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Historial de pagos</a></li>
+                  <li><a href="{{ url('/') }}"><i class="fa fa-circle-o"></i> Estado de matrícula</a></li>
+                  <li><a href="{{ url('/') }}"><i class="fa fa-circle-o"></i> Historial de pagos</a></li>
+                  <li><a href="{{ url('matricula/registrar') }}"><i class="fa fa-circle-o"></i> Registrar matrícula</a></li>
               </ul>
             </li>
             <li class="treeview">

@@ -22,11 +22,13 @@
                 <div class="box-body">
                     <p>Es necesario definir los años lectivos de su institución educativa.</p>
                     <p>Cada año lectivo contiene periodos lectivos, y cada periodo contiene unidades.</p>
-                    <ul>
-                        <li>Año lectivo actual: <strong>{{ $current_year->name or 'Sin nombre' }}</strong> ({{ $current_year->range or 'Ninguno' }})</li>
-                    </ul>
                     <p>Tenga en cuenta que los años lectivos finalizados no pueden alterarse bajo ningún concepto.</p>
                     <p>La información de años pasados permanece en el sistema, y puede consultarse las veces que sea necesario.</p>
+                    <p>Información del año lectivo en curso:</p>
+                    <ul>
+                        <li>Año lectivo: <strong>{{ $current_year->name }}</strong> ({{ $current_year->range or 'Ninguno' }})</li>
+                        <li>Malla curricular en uso: <strong><a href="{{ url('configuracion/malla/'.$current_handbook->id) }}">{{ $current_handbook->name }}</a></strong></li>
+                    </ul>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>
@@ -60,8 +62,21 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="name">Nombre del año lectivo:</label>
-                            <input type="text" name="name" placeholder="Nombre del año" value="{{ old('name') }}" class="form-control">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="name">Nombre del año lectivo:</label>
+                                    <input type="text" name="name" placeholder="Nombre del año" value="{{ old('name') }}" class="form-control">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="course_handbook_id">Malla curricular asociada:</label>
+                                    <select name="course_handbook_id" class="form-control">
+                                        @foreach ($handbooks as $handbook)
+                                            <option value="{{ $handbook->id }}">{{ $handbook->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -100,6 +115,7 @@
                         <tr>
                             <td>Código</td>
                             <td>Año lectivo</td>
+                            <td>Mala curricular</td>
                             <td>Fecha de inicio</td>
                             <td>Fecha de fin</td>
                             <td>Opciones</td>
@@ -109,7 +125,8 @@
                         @foreach ($years as $year)
                         <tr>
                             <td>{{ $year->id }}</td>
-                            <td>{{ $year->name or 'Sin nombre' }}</td>
+                            <td>{{ $year->name }}</td>
+                            <td>{{ $year->course_handbook->name }}</td>
                             <td>{{ $year->start_format }}</td>
                             <td>{{ $year->end_format }}</td>
                             <td>

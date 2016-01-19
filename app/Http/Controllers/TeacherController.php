@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SchoolYear;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,7 +33,7 @@ class TeacherController extends Controller
             'email' => 'required|email|unique:users',
             'first_name' => 'required|min:4',
             'last_name' => 'required|min:4',
-            'identity_card' => 'digits:8',
+            'identity_card' => 'required|digits:8',
             'birth_date' => 'date',
             'photo' => 'image',
             'remark' => 'min:4',
@@ -49,6 +50,7 @@ class TeacherController extends Controller
             'first_name.min' => 'Ingrese un nombre adecuado.',
             'last_name.required' => 'Es necesario ingresar los apellidos del usuario.',
             'last_name.min' => 'Ingrese un apellido adecuado.',
+            'identity_card.required' => 'El campo DNI es obligatorio. Su contraseña inicialmente será su DNI.',
             'identity_card.digits' => 'El DNI debe presentar 8 dígitos.',
             'birth_date' => 'Por favor ingrese una fecha de nacimiento adecuada.',
             'photo.image' => 'Asegúrese de subir una imagen adecuada para la foto.',
@@ -67,7 +69,7 @@ class TeacherController extends Controller
 
         $user = User::create([
             'email' => $request->get('email'),
-            'password' => $request->get('identity_card'),
+            'password' => bcrypt($request->get('identity_card')),
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
             'identity_card' => $request->get('identity_card'),

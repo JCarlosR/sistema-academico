@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolYear extends Model
 {
 
-    protected $fillable = [ 'name', 'start', 'end' ];
+    protected $fillable = [ 'name', 'start', 'end', 'course_handbook_id' ];
 
     protected $dates = [ 'start', 'end' ];
 
